@@ -14,18 +14,32 @@
 
 .feed-grid{
   grid-area: feed-grid;
-  display: flex;
-  justify-content: center;
-  overflow: auto;
+  display: grid;
+  grid-template-rows: 1.2fr 5fr;
+  grid-template-areas: "post"
+                        "feed-news";
   border-left: 1px solid #2f3336;
   border-right: 1px solid #2f3336;
+}
+
+.post{
+  grid-area: post;
+  display: flex;
+  border-bottom: 1px solid #2f3336;
+}
+
+.feed-news{
+  grid-area: feed-news;
+  display: flex;
 }
 
 .trending-grid{
   grid-area: trending-grid;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   overflow: auto;
+  margin-left: 25px;
+  flex-direction: column;
 }
 
 .Sidebar{
@@ -140,5 +154,122 @@
   font-size: 15px;
   color: #71767b;
 }
+
+.post-box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+.post-title-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.post-title{
+  font-weight: bold;
+}
+
+.post-tweet-text-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-tweet-text{
+  width: 100%;
+}
+
+.post-tweet-text .text{
+  color:#71767b;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.post-tweet-text .buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.small-buttons{
+  color:#1d9bf0;
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons .tweet-button{
+  border-radius: 30px;
+  font-weight: bold;
+  text-transform: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.post-tweet-text .settings{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+  color:#1d9bf0;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #2f3336;
+}
+
+.post-tweet-text .settings .settins-icon{
+  margin-left: 10px;
+}
+
+.post-button-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-tweet-photo{
+  margin-right: 15px;
+}
+
+.search{
+  display: flex;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+
+.search input{
+  background-color: #202327;
+  border: 0;
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 320px;
+  height: 20px;
+  padding: 12px;
+  border-radius: 30px;
+  color:#fff;
+  font-size: 15px;
+}
+
+.trending-fake-box{
+  width: 320px;
+  height: 50%;
+  border-radius: 30px;
+  padding: 12px;
+  background-color: #202327;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+
+
+
+
+
+
 
 
