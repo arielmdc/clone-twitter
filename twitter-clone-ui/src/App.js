@@ -5,33 +5,34 @@ import Sidebar from './Components/Sidebar';
 import Post from './Components/Post';
 import SearchIcon from '@mui/icons-material/Search';
 import api from "./services/api";
+import { Avatar } from "@mui/material";
 
 
 
 function App() {
+  const [dataTweet, setDataTweet] = useState([]);
 
-  const delayedQuery = useRef(
-    throttle(e =>{
-      api.post('/usuarios', {
+  const delayedQuery = throttle(e =>{
+      api.post('/tags', {
         searchTag: e,
       })
       .then(function (response) {
-        console.log(response);
+        let x = []
+        response.data.map((val, key)=>{
+          x.push(val);
+        })
+        setDataTweet(x);
+        // console.log(typeof(dataTweet));
+        console.log(dataTweet)
       })
     },1000)
-  ).current;
 
-// function handleKeyPress(event) {
-    // api.post('/usuarios', {
-    //   Name: 'Fred',
-    //   Age: '23'
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-// }
+
   function handleChange(e){
-    delayedQuery(e.target.value);
+    if(e.target.value.length >= 3){
+      // console.log("#"+e.target.value.replace(/#/g, "").replace(/ /g, ""));
+      delayedQuery("#"+e.target.value.replace(/#/g, "").replace(/ /g, "")); 
+    }
   }
 
   return (
@@ -44,6 +45,19 @@ function App() {
           <Post />
         </div>
         <div className="feed-news">
+          {dataTweet.map((val,key)=>{
+              return(
+                <div className="feed-box">
+                  <div className="feed-tweet-profile-photo">
+                    <Avatar alt="ProfilePhoto" src={val.user.profile_image_url}/>
+                  </div>    
+                  <div className="feed-tweet-all-info">
+                    {val.user.name}
+                  </div>
+
+                </div>
+              )
+          })}
           
         </div>
         
@@ -54,7 +68,7 @@ function App() {
           <input type="text" placeholder="Search Twitter" onChange={handleChange}></input>
         </div>
 
-        <div className="trending-fake-box">
+        <div className="trending-fake-box" onClick={()=> console.log(dataTweet)}>
           What’s happening
         </div>
         <div className="trending-fake-box">
