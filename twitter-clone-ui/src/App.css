@@ -31,6 +31,8 @@
 .feed-news{
   grid-area: feed-news;
   display: flex;
+  flex-direction: column;
+  margin: 15px;
 }
 
 .trending-grid{
@@ -263,6 +265,18 @@
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 15px;
+}
+
+.feed-box{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+}
+
+.feed-tweet-all-info{
+  display: flex;
+  flex-direction: column;
 }
 
 
