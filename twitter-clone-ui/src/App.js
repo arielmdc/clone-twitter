@@ -6,7 +6,10 @@ import Post from './Components/Post';
 import SearchIcon from '@mui/icons-material/Search';
 import api from "./services/api";
 import { Avatar } from "@mui/material";
-
+import QuickreplyOutlinedIcon from '@mui/icons-material/QuickreplyOutlined';
+import FlipCameraAndroidOutlinedIcon from '@mui/icons-material/FlipCameraAndroidOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined';
 
 
 function App() {
@@ -29,6 +32,7 @@ function App() {
 
 
   function handleChange(e){
+    setDataTweet([])
     if(e.target.value.length >= 3){
       // console.log("#"+e.target.value.replace(/#/g, "").replace(/ /g, ""));
       delayedQuery("#"+e.target.value.replace(/#/g, "").replace(/ /g, "")); 
@@ -52,7 +56,40 @@ function App() {
                     <Avatar alt="ProfilePhoto" src={val.user.profile_image_url}/>
                   </div>    
                   <div className="feed-tweet-all-info">
-                    {val.user.name}
+                    <div className="name-nickname-box">
+                      <div className="name">
+                        {val.user.name}
+                      </div>
+                      <div className="nickname">
+                        {'@'+val.user.screen_name}
+                      </div>
+                    </div>
+                    <div className="text">
+                      {val.text}
+                    </div>
+                    <div className="media">
+                      {typeof val.entities.media != "undefined"
+                      ?<img  className="tweet-img"src={val.entities.media['0'].media_url}/>
+                      :<></>
+                      }       
+                    </div>
+                    <div className="utility">
+                      <div className="reply">
+                        <QuickreplyOutlinedIcon fontSize="inherit"/>
+                      </div>
+                      <div className="retweet">
+                        <FlipCameraAndroidOutlinedIcon fontSize="inherit"/>
+                        {val.retweet_count}
+                      </div>
+                      <div className="like">
+                        <FavoriteBorderOutlinedIcon fontSize="inherit"/>
+                        {val.favorite_count}
+                      </div>
+                      <div className="share">
+                      <IosShareOutlinedIcon fontSize="inherit"/>
+                      </div>
+                    </div>
+                    
                   </div>
 
                 </div>
