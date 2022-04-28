@@ -18,7 +18,7 @@ app.use(express.json());
 app.post("/tags", (req,res)=>{
     const tag = req.body.searchTag;
     console.log(tag)
-    T.get('search/tweets', { q: tag, count: 2 }, function(err, data, response) {
+    T.get('search/tweets', { q: tag, count: 10 }, function(err, data, response) {
         return res.json(data.statuses)
       })
 });
