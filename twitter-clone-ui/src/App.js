@@ -64,7 +64,7 @@ function App() {
                       </div>
                     </div>
                     <div className="text">
-                      {val.text}
+                      {val.full_text}
                     </div>
                     <div className="media">
                       {typeof val.entities.media != "undefined"
