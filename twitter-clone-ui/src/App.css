@@ -310,7 +310,9 @@
 
 }
 
-
+:not(:root):fullscreen {
+  object-fit: contain !important;
+}
 
 .video-box video{
   width: 100%;
