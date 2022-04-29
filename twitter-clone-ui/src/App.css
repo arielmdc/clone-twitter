@@ -354,6 +354,7 @@
 
 .feed-tweet-all-info .text{
   margin-bottom: 5px;
+  white-space: pre-line;
 }
 
 .utility .reply{
