@@ -10,6 +10,7 @@ import QuickreplyOutlinedIcon from '@mui/icons-material/QuickreplyOutlined';
 import FlipCameraAndroidOutlinedIcon from '@mui/icons-material/FlipCameraAndroidOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined';
+import LogoReact from "./assets/logo-react.png"
 
 
 function App() {
@@ -107,6 +108,9 @@ function App() {
 
         <div className="trending-fake-box" onClick={()=> console.log(dataTweet)}>
           What’s happening
+          {/* <div className="logo-react">
+            <img src={LogoReact}></img>
+          </div> */}
         </div>
         <div className="trending-fake-box">
           Who to follow
