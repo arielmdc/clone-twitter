@@ -30,7 +30,6 @@ function App() {
       })
     },1000)
 
-
   function handleChange(e){
     setDataTweet([])
     if(e.target.value.length >= 3){
@@ -69,7 +68,19 @@ function App() {
                     </div>
                     <div className="media">
                       {typeof val.entities.media != "undefined"
-                      ?<img  className="tweet-img"src={val.entities.media['0'].media_url}/>
+                      ?val.extended_entities.media['0'].type != "video"
+                        ?<img  className="tweet-img" src={val.entities.media['0'].media_url}/>
+                        :val.extended_entities.media['0'].video_info.variants['0'].content_type == "video/mp4"
+                          ?<div className="video-box" id="video-box">
+                              <video controls>
+                                <source src={val.extended_entities.media['0'].video_info.variants['0'].url} type={val.extended_entities.media['0'].video_info.variants['0'].content_type}/>
+                              </video>
+                          </div>
+                          :<div className="video-box" id="video-box">
+                            <video  controls>
+                              <source src={val.extended_entities.media['0'].video_info.variants['1'].url} type={val.extended_entities.media['0'].video_info.variants['1'].content_type}/>
+                            </video>
+                          </div>                    
                       :<></>
                       }       
                     </div>
