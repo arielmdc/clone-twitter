@@ -19,7 +19,37 @@ app.post("/tags", (req,res)=>{
     const tag = req.body.searchTag;
     console.log(tag)
     T.get('search/tweets', { q: tag, count: 10, tweet_mode: 'extended', exclude: "retweets"}, function(err, data, response) {
-        return res.json(data.statuses)
+        resposta = [];
+        data.statuses.map((val,key)=>{
+            hashtags = "";
+            media_type = "";
+            media_url = "";
+            val.entities.hashtags.map((val2,key)=>{
+                hashtags+= "#"+val2.text+" ";
+            })
+            if(typeof val.entities.media != "undefined"){
+                if(val.extended_entities.media['0'].type != "video"){
+                    media_type = "photo"
+                    media_url = val.entities.media['0'].media_url
+                }else{
+                    val.extended_entities.media['0'].video_info.variants.map((val3, key) =>{
+                        if(val3.content_type == "video/mp4"){
+
+                            media_type = val3.content_type
+                            media_url = val3.url;
+                        }
+                    })
+                }
+            }
+            resposta.push({"full_text": val.full_text,"hashtags": hashtags, "retweet_count": val.retweet_count, "favorite_count": val.favorite_count,
+             "profile_image_url": val.user.profile_image_url, "user_name": val.user.name, "screen_name": val.user.screen_name,
+            "media_type": media_type,  "media_url":  media_url})
+            console.log(resposta)
+            // console.log(y)
+            // console.log(val.full_text)
+            // x.push([val.full_text])
+        })
+        return res.json(resposta)
       })
 });
 
