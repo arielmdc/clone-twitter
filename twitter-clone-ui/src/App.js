@@ -13,7 +13,7 @@ function App() {
 
   const delayedQuery = throttle(e =>{
       api.post('/tags', {
-        searchTag: e,
+        searchTag: "#"+e.replace(/#/g, "").replace(/ /g, ""),
       })
       .then(function (response) {
         let x = []
@@ -28,7 +28,7 @@ function App() {
   function handleChange(e){
     setDataTweet([])
     if(e.target.value.length >= 3){
-      delayedQuery("#"+e.target.value.replace(/#/g, "").replace(/ /g, "")); 
+      delayedQuery(e.target.value); 
     }
   }
 
@@ -42,6 +42,9 @@ function App() {
           <Post />
         </div>
         <div className="feed-news">
+        <div className="search-small">
+          <input type="text" placeholder="Search Twitter" onChange={handleChange}></input>
+        </div>
           {dataTweet.map((val,key)=>{
               return(
                 <div className="feed-box">
