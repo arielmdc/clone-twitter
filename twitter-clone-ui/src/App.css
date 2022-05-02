@@ -238,6 +238,15 @@
   flex-direction: row;
 }
 
+.hastags a{
+  color: #1d9bf0;
+  font-weight: normal;
+  text-decoration: none;
+}
+.hastags {
+  font-weight: bold;
+}
+
 .post-tweet-photo{
   margin-right: 15px;
 }
