@@ -18,6 +18,9 @@ function Tweet(props){
                     </div>
                     <div className="text">
                       {props.full_text}
+                      <div className="hastags">
+                        <a href="">{props.hashtags}</a>
+                      </div>
                     </div>
                     <div className="media">
                       

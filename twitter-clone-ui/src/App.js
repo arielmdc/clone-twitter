@@ -53,7 +53,8 @@ function App() {
                   </div>    
                   <Tweet name={val.user_name} 
                         screen_name={val.screen_name} 
-                        full_text={val.full_text} 
+                        full_text={val.full_text}
+                        hashtags={val.hashtags}
                         media_type={val.media_type} 
                         media_url={val.media_url} 
                         retweet_count={val.retweet_count} 
