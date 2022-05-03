@@ -20,6 +20,7 @@
   display: grid;
   grid-template-rows: 1.2fr 5fr;
   grid-template-areas: "post"
+                        "search"
                         "feed-news";
   border-left: 1px solid #2f3336;
   border-right: 1px solid #2f3336;
@@ -38,6 +39,10 @@
   overflow-y: auto;
   overflow-x: hidden;
 
+}
+
+.small-search{
+  grid-area: search;
 }
 
 .trending-grid{
@@ -437,6 +442,10 @@
 }
 
 @media (max-width: 1020px  ){
+  .feed-grid{
+    grid-template-rows: 1.2fr 50px 5fr;
+  }
+  
   .trending-fake-box{
     display: none;
    }

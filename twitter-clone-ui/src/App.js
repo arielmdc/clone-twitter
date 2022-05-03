@@ -41,10 +41,11 @@ function App() {
         <div className="post">
           <Post />
         </div>
-        <div className="feed-news">
         <div className="search-small">
           <input type="text" placeholder="Search Twitter" onChange={handleChange}></input>
         </div>
+        <div className="feed-news">
+        
           {dataTweet.map((val,key)=>{
               return(
                 <div className="feed-box">
