@@ -59,5 +59,5 @@ app.post("/tags", (req,res)=>{
 });
 
 app.listen(3001, () =>{
- console.log("Servidor ta funcionando");
+ console.log("500 Servidor ta funcionando");
 });
